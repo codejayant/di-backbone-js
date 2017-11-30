@@ -101,5 +101,28 @@ $(function() {
     });
 
     <!-- Write your Backbone Collection and App code here -->
+    let LicensePlateList = Backbone.Collection.extend({
+        model: LicensePlate
+    });
+
+    let plateList = new LicensePlateList(plates);
+
+    let AppView = Backbone.View.extend({
+        el: "#container",
+
+        initialize: function () {
+            this.render();
+        },
+
+        render: function () {
+            plateList.each((plate) => {
+                let view = new LicensePlateView({model: plate});
+                this.$el.append(view.render().el);
+            });
+            return this;
+        }
+    });
+
+    let app = new AppView();
 
 });
