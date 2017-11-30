@@ -11,7 +11,7 @@
     <script type="text/javascript">
         'use strict';
 
-        var plateData = {
+        let plateData = {
             "_id": "5a0c8ab22d8dc1f7fa170c9d",
             "onSale": false,
             "picture": "http://angulartraining.com/plates/GA.jpg",
@@ -23,6 +23,21 @@
         };
 
         <!-- Write your Backbone code here -->
+        let LicensePlate = Backbone.Model.extend({
+            defaults: {
+                _id: '',
+                onSale: false,
+                picture: '',
+                title: '',
+                price: 0,
+                year: 0,
+                state: '',
+                description: ''
+            }
+        });
+
+        let plate = new LicensePlate(plateData);
+        alert('License plate created: ' + plate.get('title'));
     </script>
 </body>
 </html>
