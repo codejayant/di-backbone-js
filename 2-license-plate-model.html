@@ -28,17 +28,23 @@
         // let LicensePlate = Backbone.Model.extend({});
 
         let LicensePlate = Backbone.Model.extend({
-            defaults: {
-                onSale: false,
-                title: '',
-                price: 0,
-                state: '',
-                description: ''
+            getTitle : function()   {
+                return this.get('title');
             }
         });
 
+        // let LicensePlate = Backbone.Model.extend({
+        //     defaults: {
+        //         onSale: false,
+        //         title: '',
+        //         price: 0,
+        //         state: '',
+        //         description: ''
+        //     }
+        // });
+
         let plate = new LicensePlate(plateData);
-        alert('License plate created: ' + plate.get('title'));
+        alert('License plate created: ' + plate.getTitle());
     </script>
 </body>
 </html>
