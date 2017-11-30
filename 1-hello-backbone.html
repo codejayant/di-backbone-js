@@ -12,6 +12,19 @@
         'use strict';
 
         <!-- Write your Backbone code here -->
+        let HelloWorld = Backbone.Model.extend({
+            defaults: {
+                message: 'Backbone World'
+            },
+
+            helloWorld: function()  {
+                // alert(`Hello Message : ${this.get('message')}`);
+                alert('Hello Message : ' + this.get('message'));
+            }
+        });
+
+        let hello = new HelloWorld();
+        hello.helloWorld();
 
     </script>
 </body>
