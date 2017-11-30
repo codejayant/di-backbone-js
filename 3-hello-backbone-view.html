@@ -5,25 +5,57 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Lab 3 for Backbone.js</title>
     <!-- Add jQuery dependency here -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/backbone.js/1.3.3/backbone-min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 
 </head>
 <body>
-    <script type="text/javascript">
-        'use strict';
 
-        var HelloWorld = Backbone.Model.extend({
-            defaults: {
-                message: "Backbone World"
-            },
-            helloWorld: function() {
-                return "Hello "+ this.get('message') +"!";
-            }
-        });
+<div id="first-area"></div>
+<div id="second-area"></div>
+<div id="third-area"></div>
 
-        <!-- Write your Backbone code here -->
-    </script>
+<script type="text/javascript">
+    'use strict';
+
+    let HelloWorld = Backbone.Model.extend({
+        defaults: {
+            message: "Backbone World"
+        },
+        helloWorld: function () {
+            return "Hello " + this.get('message') + "!";
+        }
+    });
+
+    let helloModel = new HelloWorld();
+    let helloModel2 = new HelloWorld({message: 'second message'});
+
+    <!-- Write your Backbone code here -->
+    let HelloBackboneView = Backbone.View.extend({
+        el: 'body',
+        initialize: function () {
+            this.listenTo(this.model, 'change', this.render);
+            this.render();
+        },
+
+        render: function () {
+           return this.$el.html(this.model.helloWorld());
+        }
+    });
+
+    // let app = new HelloBackboneView();
+
+    let app = new HelloBackboneView({
+        model: helloModel,
+        el: '#first-area, #second-area'
+    });
+    let app2 = new HelloBackboneView({
+        model: helloModel2,
+        el: '#third-area'
+    })
+</script>
 </body>
 </html>
