@@ -114,15 +114,14 @@ $(function() {
             this.render();
         },
         render: function () {
-            plateList.each((plate) => {
-                let model = new LicensePlateView({model: plate});
-                this.$el.append(model.render().el);
+            this.collection.each((plate) => {
+                let view = new LicensePlateView({model: plate});
+                this.$el.append(view.render().el);
             });
-            return this;
         }
 
     });
 
-    var app = new AppView();
+    var app = new AppView({collection: plateList});
 
 });
