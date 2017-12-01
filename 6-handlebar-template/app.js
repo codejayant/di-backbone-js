@@ -90,12 +90,15 @@ $(function() {
     var LicensePlateView = Backbone.View.extend({
         tagName:  "div",
         attributes: {class: 'col-md-4', style: 'margin-top: 40px'},
-        template: _.template($('#plate-template').html()),
         initialize: function () {
             this.render();
         },
         render: function () {
-            this.$el.html(this.template(this.model.toJSON()));
+            let src = $('#plate-template').html();
+            let template = Handlebars.compile(src);
+            let html = template(this.model.toJSON());
+
+            this.$el.html(html);
             return this;
         }
     });

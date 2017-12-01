@@ -14,10 +14,10 @@
 <body>
 
     <script type="text/template" id="plate-template">
-        <h2><%- title %></h2>
-        <img src="<%- picture %>" class="img-fluid">
-        <p><%- description %></p>
-        <p> <h2 class="float-left">$<%- price %></h2><a class="btn btn-primary float-right" href="#" role="button">Add to cart &raquo;</a></p>
+        <h2>{{title}}</h2>
+        <img src="{{this.picture}}" class="img-fluid">
+        <p>{{this.description}}</p>
+        <p> <h2 class="float-left">${{this.price}}</h2><a class="btn btn-primary float-right" href="#" role="button">Add to cart &raquo;</a></p>
     </script>
 
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
